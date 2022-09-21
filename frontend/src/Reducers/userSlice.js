@@ -1,15 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { loginUser } from "../api";
 
-export const loginuser = createAsyncThunk("user/loginuser", async (data) => {
-  try {
-    // console.log("thunk", data);
-    await loginUser(data);
-    return;
-  } catch (error) {
-    console.log(error.message);
+export const loginuser = createAsyncThunk(
+  "user/loginuser",
+  async (data, thunkAPI) => {
+    const { fulfillWithValue } = thunkAPI;
+    try {
+      const { user } = await loginUser(data);
+      console.log("thunk", user);
+      return fulfillWithValue(user);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
-});
+);
 
 const initialState = {
   email: "",

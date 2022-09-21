@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="flex flex-col justify-center content-around">
       <Navbar />
-      <div className="flex flex-row ">
+      <div className="flex flex-row">
         <Posts />
         <Form />
       </div>

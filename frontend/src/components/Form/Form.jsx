@@ -12,6 +12,7 @@ function Form() {
     message: "",
     selectedFile: "",
     createdAt: "",
+    addCart: false,
   });
 
   const handleSubmit = (e) => {
@@ -32,44 +33,50 @@ function Form() {
     <div className="flex  justify-center ">
       <form
         action="submit"
-        className="h-fit border-2 border-gray-400 bg-slate-100 w-[22em] mt-14 rounded-lg flex flex-col justify-around "
+        className="h-fit border-2 border-gray-400 bg-slate-100 w-[30em] mt-14 rounded-lg flex flex-col justify-around "
         onSubmit={handleSubmit}
       >
-        <h1 className="text-2xl mx-auto">Title</h1>
+        <h1 className="text-5xl mx-auto tracking-widest my-6">Post</h1>
         <div className="flex flex-col justify-center items-center ">
-          <label htmlFor="">Creator</label>
+          <label htmlFor="" className="text-3xl">
+            Creator
+          </label>
 
           <input
             type="text"
             placeholder="Name"
-            className="w-[90%] h-10 p-4"
+            className="w-[90%] h-20 p-4 text-2xl"
             onChange={(e) =>
               setPostData({ ...postData, creator: e.target.value })
             }
           />
         </div>
 
-        <div className="flex flex-col justify-center items-center  ">
-          <label htmlFor="">Title</label>
+        <div className="flex flex-col justify-center items-center my-3">
+          <label htmlFor="" className="text-3xl">
+            NFT Name
+          </label>
 
           <input
             type="text"
             placeholder="Name"
-            className="w-[90%] h-10 p-4"
+            className="w-[90%] h-20 p-4 text-2xl"
             onChange={(e) =>
               setPostData({ ...postData, title: e.target.value })
             }
           />
         </div>
 
-        <div className="flex flex-col justify-center items-center  ">
-          <label htmlFor="">Description</label>
+        <div className="flex flex-col justify-center items-center  my-3">
+          <label htmlFor="" className="text-3xl">
+            Description
+          </label>
           <textarea
             name="creator"
             id=""
             cols="45"
             rows="10"
-            className="w-[90%]"
+            className="w-[90%] text-2xl p-3 "
             value={postData.message}
             onChange={(e) =>
               setPostData({ ...postData, message: e.target.value })
@@ -77,7 +84,7 @@ function Form() {
           ></textarea>
         </div>
 
-        <div className="mx-4 my-4">
+        <div className="mx-4 my-4 ">
           <FileBase
             type="file"
             multiple={false}
@@ -88,12 +95,12 @@ function Form() {
         </div>
         <div className="flex flex-col  text-white">
           <button
-            className="m-4 my-2 bg-[#091540] h-10 rounded-sm"
+            className="m-4 my-2 bg-[#091540] h-16 rounded-sm text-2xl"
             type="submit"
           >
             SUBMIT
           </button>
-          <button className="m-4 my-2 bg-[#091540] h-10 rounded-sm">
+          <button className="m-4 my-2 bg-[#091540] h-16 rounded-sm text-2xl">
             CLEAR
           </button>
         </div>

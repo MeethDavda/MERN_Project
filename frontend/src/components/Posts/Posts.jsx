@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Post from "./Post";
 import { useSelector } from "react-redux";
 import { CircularProgress } from "@mui/material";
 
 function Posts() {
-  const data = useSelector((state) => state.posts);
-  console.log("data", data);
+  const data = useSelector((state) => state.post);
+
+  // console.log("data", data);
+
   return (
     <div className=" w-[60%] mx-20 m-4 flex flex-row flex-wrap">
-      {/* {!data.length ? (
+      {!data.posts.length ? (
         <CircularProgress size={90} />
       ) : (
-        data.map((post) => {
+        data.posts.map((posts) => {
           return (
             <Post
-              image={post.selectedFile}
-              title={post.title}
-              message={post.message}
-              key={post._id}
-              id={post._id}
-              createdAt={post.createdAt}
-              creator={post.creator}
+              image={posts.selectedFile}
+              title={posts.title}
+              message={posts.message}
+              key={posts._id}
+              id={posts._id}
+              cart={posts.addCart}
+              createdAt={posts.createdAt}
+              creator={posts.creator}
             />
           );
         })
-      )} */}
+      )}
       {/* {data.map((post) => {
         return (
           <Post
