@@ -28,3 +28,19 @@ export const deletePost = async (req, res) => {
   if (!mongoose.Types.ObjectId(id)) return res.status(404);
   await postMessage.findByIdAndRemove(id);
 };
+
+export const addCart = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId(id)) return res.status(404);
+  await postMessage.findByIdAndUpdate(id, {
+    addCart: true,
+  });
+};
+
+export const removeCart = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId(id)) return res.status(404);
+  await postMessage.findByIdAndUpdate(id, {
+    addCart: false,
+  });
+};

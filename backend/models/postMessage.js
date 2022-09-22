@@ -13,6 +13,7 @@ const postSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  addCart: Boolean,
 });
 
 const postMessage = mongoose.model("postMessage", postSchema);
