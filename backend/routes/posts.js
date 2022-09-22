@@ -6,9 +6,11 @@ import {
   addCart,
   removeCart,
 } from "../controllers/postsCon.js";
-import { login } from "../controllers/authCon.js";
+import { getUsers, login } from "../controllers/authCon.js";
+
 const router = express.Router();
-router.get("/", getPosts);
+router.get("/posts", getPosts);
+router.get("/users", getUsers);
 router.post("/create", createPost);
 router.delete("/delete/:id", deletePost);
 router.post("/login", login);

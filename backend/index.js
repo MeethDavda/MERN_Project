@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cors());
-app.use("/posts", postRoutes);
+app.use("/", postRoutes);
 const CONNECTION_URL =
   "mongodb+srv://Meeth:Legolego2002@cluster0.l6dizcm.mongodb.net/firstPorject?retryWrites=true&w=majority";
 
