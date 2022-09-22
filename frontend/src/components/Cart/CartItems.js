@@ -6,7 +6,7 @@ import { CircularProgress } from "@mui/material";
 function CartItems() {
   const data = useSelector((state) => state.post);
   const cartData = data.posts.filter((postss) => postss.addCart === true);
-  console.log("smtung", cartData);
+  //   console.log("smtung", cartData);
 
   return (
     <div>

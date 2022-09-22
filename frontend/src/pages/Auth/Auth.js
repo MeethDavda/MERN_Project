@@ -1,21 +1,28 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { loginuser } from "../../Reducers/userSlice";
+import { handle } from "./AuthService";
 
 function Auth() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const user = useSelector((state) => state.user);
+
+  // console.log(user);
 
   const temp = {
     email: email,
     password: password,
   };
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
-    // console.log(temp);
+
     dispatch(loginuser(temp));
+
+    // console.log(temp);
   };
 
   return (
