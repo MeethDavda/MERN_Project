@@ -1,34 +1,34 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../../api";
-
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { registeruser } from "../../Reducers/userSlice";
 import { handle } from "./AuthService";
 
-function Auth({ setLoginUser }) {
-  // const dispatch = useDispatch();
-  const navigate = useNavigate();
+function Auth() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const user = useSelector((state) => state.user);
+
+  // console.log(user);
 
   const temp = {
     email: email,
     password: password,
   };
 
-  const handlelogin = async (e) => {
+  const registerhandler = async (e) => {
     e.preventDefault();
 
-    const data = await loginUser(temp);
-    // console.log(data.data.user);
-    setLoginUser(data.data.user);
-    navigate("/");
+    dispatch(registeruser(temp));
+
+    // console.log(temp);
   };
 
   return (
     <div className="absolute top-1/3 left-1/3">
       <form
-        onSubmit={handlelogin}
+        onSubmit={registerhandler}
         className="flex flex-col h-fit md:bg-slate-700 w-[24em] rounded-md shadow-2xl tracking-wider"
       >
         <div className="flex flex-col p-7 mt-10">
@@ -67,13 +67,14 @@ function Auth({ setLoginUser }) {
             type="submit"
             className="flex justify-center content-center bg-slate-800 h-12 text-slate-200 rounded-md pt-2 text-xl mb-10"
           >
-            Login
+            Register
           </button>
         </div>
-        <Link to="/register">
+
+        <Link to="/">
           <div className="flex flex-col px-7 ">
             <button className="flex justify-center content-center bg-slate-800 h-12 text-slate-200 rounded-md pt-2 text-xl mb-10">
-              Register
+              Back to Login
             </button>
           </div>
         </Link>

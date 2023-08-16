@@ -47,6 +47,7 @@ export const deletepost = createAsyncThunk(
 export const addcart = createAsyncThunk(
   "post/addcart",
   async (id, thunkAPI) => {
+    // console.log("happen");
     const { fulfillWithValue } = thunkAPI;
     try {
       const add = await addCart(id);
